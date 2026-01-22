@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais Bela Make | A partir de R$ 10</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --roxo-vibrante: #7b2cbf;
+            --roxo-escuro: #240046;
+            --lilas-fundo: #fdfaff;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--lilas-fundo); }
+        .font-logo { font-family: 'Playfair Display', serif; }
+        
+        .card-make { 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-make:hover { 
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(123, 44, 191, 0.2);
+        }
+
+        .logo-placeholder {
+            min-width: 220px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(90deg, #25d366, #128c7e);
+        }
+
+        html { scroll-behavior: smooth; }
+        #banner-img { transition: opacity 0.8s ease-in-out; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="bg-purple-950 text-white py-2.5 text-center text-[11px] font-bold tracking-[4px] uppercase">
+        ✨ PRODUTOS A PARTIR DE R$ 10,00 • ENVIAMOS PARA VOCÊ ✨
+    </div>
+
+    <header class="sticky top-0 z-[100] bg-white/90 backdrop-blur-lg py-4 shadow-sm border-b border-purple-100">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/maisbela10_/?__pwa=1" target="_blank" class="text-purple-900 hover:scale-110 transition">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+            </div>
+
+            <div class="text-center" data-aos="fade-down">
+                <div class="logo-placeholder">
+                    <h1 class="font-logo text-4xl md:text-5xl text-purple-950 font-bold italic">
+                        Mais Bela Make
+                    </h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button onclick="toggleCart()" class="relative p-3 bg-purple-100 rounded-2xl text-purple-700 hover:bg-purple-700 hover:text-white transition-all">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-500 text-white text-[11px] rounded-full h-6 w-6 flex items-center justify-center font-bold border-2 border-white">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-[500px] md:h-[650px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img id="banner-img" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1470" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#fdfaff] via-transparent to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4" data-aos="zoom-in">
+            <h2 class="font-logo text-5xl md:text-7xl text-purple-950 mb-6 italic">Beleza Acessível</h2>
+            <p class="text-purple-800 font-bold text-lg mb-8 uppercase tracking-widest">A partir de R$ 10,00</p>
+            <a href="#loja" class="bg-purple-900 text-white px-12 py-4 rounded-full font-bold shadow-xl hover:bg-purple-800 transition-all uppercase text-sm tracking-widest">Ver Produtos</a>
+        </div>
+    </section>
+
+    <main id="loja" class="container mx-auto py-20 px-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+            
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 10,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Batom Matte Velvet</h4>
+                <button onclick="addToCart('Batom Matte Velvet', 10.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 15,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Creme Soft Face</h4>
+                <button onclick="addToCart('Creme Soft Face', 15.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1522338223523-d30006796c73?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 10,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Pincel para Sombra</h4>
+                <button onclick="addToCart('Pincel para Sombra', 10.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 25,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Paleta de Cores</h4>
+                <button onclick="addToCart('Paleta de Cores', 25.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1590156221170-28a179df777c?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 12,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Esfoliante Labial</h4>
+                <button onclick="addToCart('Esfoliante Labial', 12.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+            <div class="card-make bg-white p-4 rounded-[35px] border border-purple-50" data-aos="fade-up">
+                <div class="relative overflow-hidden rounded-[28px] mb-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1631730359585-38a4935cbb6b?w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 right-3 bg-purple-900 text-white px-3 py-1 rounded-full font-bold text-xs">R$ 10,00</div>
+                </div>
+                <h4 class="font-bold text-gray-800 text-center mb-4">Sérum Vitamina C</h4>
+                <button onclick="addToCart('Sérum Vitamina C', 10.00)" class="w-full py-3 bg-purple-50 text-purple-700 rounded-2xl font-bold hover:bg-purple-900 hover:text-white transition-all">Adicionar</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-purple-100 pt-16 pb-8">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="font-logo text-3xl text-purple-950 mb-6 font-bold italic">Mais Bela Make</h4>
+            <div class="flex justify-center gap-6 mb-10">
+                <a href="https://www.instagram.com/maisbela10_/?__pwa=1" target="_blank" class="p-3 bg-purple-50 rounded-full text-purple-900"><i data-lucide="instagram"></i></a>
+                <a href="https://wa.me/553898827734" target="_blank" class="p-3 bg-purple-50 rounded-full text-purple-900"><i data-lucide="phone"></i></a>
+            </div>
+            <div class="border-t pt-8">
+                <p class="text-gray-400 text-sm mb-2">© 2026 Mais Bela Make - Todos os direitos reservados.</p>
+                <p class="text-purple-900 font-bold text-xs uppercase tracking-[3px]">Desenvolvido por alissonnxss</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-drawer" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-purple-950/40 backdrop-blur-md" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white p-10 flex flex-col shadow-2xl">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="font-logo text-3xl text-purple-900">Sua Sacola</h3>
+                <button onclick="toggleCart()"><i data-lucide="x" class="w-8 h-8 text-gray-400"></i></button>
+            </div>
+            <div id="cart-items" class="flex-1 space-y-6 overflow-y-auto"></div>
+            <div class="pt-8 border-t">
+                <div class="flex justify-between text-2xl font-bold mb-8">
+                    <span>Total</span>
+                    <span>R$ <span id="cart-total">0,00</span></span>
+                </div>
+                <input type="text" id="user-name" placeholder="Seu Nome" class="w-full bg-purple-50 border-none p-4 rounded-2xl mb-4">
+                <select id="payment-method" class="w-full bg-purple-50 border-none p-4 rounded-2xl mb-8">
+                    <option value="Pix">Pix</option>
+                    <option value="Cartão">Cartão</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+                <button onclick="sendToWhatsApp()" class="btn-whatsapp w-full text-white py-5 rounded-2xl font-bold uppercase tracking-widest">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        lucide.createIcons();
+
+        let cart = [];
+
+        // Carrossel de fundo
+        const bannerImgs = [
+            "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1470",
+            "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?w=1470",
+            "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1487"
+        ];
+        let currentImg = 0;
+        setInterval(() => {
+            const img = document.getElementById('banner-img');
+            img.style.opacity = 0;
+            setTimeout(() => {
+                currentImg = (currentImg + 1) % bannerImgs.length;
+                img.src = bannerImgs[currentImg];
+                img.style.opacity = 0.6;
+            }, 800);
+        }, 5000);
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+            toggleCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            let total = cart.reduce((a, b) => a + b.price, 0);
+            
+            if(cart.length === 0) {
+                container.innerHTML = `<p class='text-center opacity-30'>Sacola vazia...</p>`;
+            } else {
+                container.innerHTML = cart.map((item, index) => `
+                    <div class="flex items-center gap-4 bg-purple-50 p-4 rounded-3xl">
+                        <div class="flex-1 font-bold text-purple-900">${item.name}</div>
+                        <div class="font-bold">R$ ${item.price.toFixed(2)}</div>
+                        <button onclick="removeItem(${index})" class="text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    </div>
+                `).join('');
+                lucide.createIcons();
+            }
+            document.getElementById('cart-total').innerText = total.toFixed(2);
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('user-name').value;
+            if(!name || cart.length === 0) return alert("Preencha seu nome e adicione produtos.");
+            
+            let message = `💜 *MAIS BELA MAKE - NOVO PEDIDO* 💜%0A%0A*Cliente:* ${name}%0A----------------------------%0A`;
+            cart.forEach(item => message += `• ${item.name} - R$ ${item.price.toFixed(2)}%0A`);
+            message += `----------------------------%0A*TOTAL: R$ ${cart.reduce((a, b) => a + b.price, 0).toFixed(2)}*`;
+            
+            window.open(`https://wa.me/553898827734?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
