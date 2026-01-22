@@ -3,259 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mais Bela Make | Beauty Store 💖</title>
+    <title>Mais Bela Make | Inauguração ✨</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --pink-soft: #ffafcc;
-            --pink-dark: #ff8fab;
-            --purple-light: #f2e9fb;
-            --text-main: #4a1d52;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; overflow: hidden; background: #fff; }
+
+        .bg-slider { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; filter: brightness(0.65); }
+        .slide.active { opacity: 1; }
+        
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); z-index: 2; }
+
+        .main-card {
+            position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96);
+            border-radius: 40px; padding: 2.5rem 2rem; text-align: center; width: 90%; max-width: 450px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15); border: 1px solid #fff;
         }
 
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fff9fb; 
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+        .font-fancy { font-family: 'Dancing Script', cursive; color: #db2777; }
+        .font-title { font-family: 'Playfair Display', serif; color: #1a1a1a; }
 
-        .font-fancy { font-family: 'Dancing Script', cursive; }
-        .font-logo { font-family: 'Playfair Display', serif; }
+        .timer-number { font-size: 3.5rem; font-weight: 800; color: #db2777; line-height: 1; letter-spacing: -2px; }
 
-        /* Background com brilhos suaves */
-        .bg-sparkle {
-            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-        }
+        .btn { display: block; width: 100%; padding: 16px; border-radius: 50px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-size: 11px; margin-bottom: 12px; transition: 0.3s; }
+        .btn-insta { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; }
+        .btn-whats { background: #25D366; color: white; }
+        .btn:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* Header Estilo Nuvem */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(255, 175, 204, 0.2);
+        /* Rodapé com Link e Ícone do Insta */
+        .dev-link { 
+            display: inline-flex; align-items: center; gap: 8px; 
+            text-decoration: none; color: #1a1a1a; font-weight: 700; 
+            font-size: 13px; transition: 0.3s; margin-top: 5px;
         }
-
-        /* Cards Estilo "Girlie" */
-        .product-card {
-            background: white;
-            border-radius: 30px;
-            border: 2px solid transparent;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .dev-link:hover { color: #bc1888; }
+        .insta-box { 
+            width: 22px; height: 22px; 
+            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); 
+            border-radius: 6px; display: flex; align-items: center; justify-content: center;
         }
-        .product-card:hover {
-            border-color: var(--pink-soft);
-            transform: scale(1.03) translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 175, 204, 0.3);
-        }
-
-        /* Botão Mágico */
-        .btn-magic {
-            background: linear-gradient(135deg, #ffafcc 0%, #cdb4db 100%);
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(255, 175, 204, 0.4);
-        }
-        .btn-magic:hover {
-            filter: brightness(1.05);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(255, 175, 204, 0.6);
-        }
-
-        /* Animação do Banner */
-        #banner-img { transition: opacity 1.5s ease; }
-
-        .logo-container {
-            padding: 10px 25px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.5);
-            display: inline-block;
-        }
+        .insta-box svg { fill: white; width: 14px; height: 14px; }
     </style>
 </head>
-<body class="bg-sparkle">
+<body onclick="document.getElementById('musica').play()">
 
-    <div class="bg-gradient-to-r from-[#ffafcc] to-[#cdb4db] text-white py-2 text-center text-[10px] font-bold tracking-[3px] uppercase">
-        💖 Onde sua beleza brilha mais forte 💖
+    <audio id="musica" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="bg-slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200')"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522338223523-d30006796c73?q=80&w=1200')"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=80&w=1200')"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200')"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1200')"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1526045431048-f857369aba09?q=80&w=1200')"></div>
     </div>
 
-    <header class="sticky top-0 z-[100] glass-nav py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            
-            <a href="https://www.instagram.com/maisbela10_/" target="_blank" class="text-pink-500 hover:scale-110 transition">
-                <i data-lucide="instagram" class="w-6 h-6"></i>
-            </a>
+    <div class="overlay"></div>
 
-            <div class="text-center" data-aos="fade-down">
-                <div class="logo-container">
-                    <h1 class="font-logo text-3xl md:text-4xl text-[#4a1d52] italic font-bold">
-                        Mais Bela Make
-                    </h1>
-                </div>
-            </div>
-
-            <button onclick="toggleCart()" class="relative p-3 bg-pink-100 rounded-full text-pink-600 hover:bg-pink-200 transition">
-                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
-                <span id="cart-count" class="absolute -top-1 -right-1 bg-[#ff4d6d] text-white text-[10px] rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
-            </button>
-        </div>
-    </header>
-
-    <section class="relative h-[50vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img id="banner-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1487" class="w-full h-full object-cover opacity-70">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#fff9fb]"></div>
-        </div>
+    <div class="main-card">
+        <p class="font-fancy text-3xl">Prepare-se, lindeza...</p>
+        <h1 class="font-title text-4xl md:text-5xl mt-2 mb-1">Mais Bela Make</h1>
+        <p style="letter-spacing: 6px;" class="text-[9px] font-bold text-gray-400 uppercase mb-8">Maquiagens & Cosméticos</p>
         
-        <div class="relative z-10 text-center px-4" data-aos="zoom-in">
-            <span class="font-fancy text-3xl md:text-5xl text-pink-500 mb-2 block">Bem-vinda, lindeza!</span>
-            <h2 class="text-4xl md:text-7xl font-bold text-[#2d0a4e] mb-6 leading-tight">Makes que Amamos</h2>
-            <p class="text-pink-600 font-bold text-xs md:text-sm mb-8 uppercase tracking-[4px]">Tudo por um precinho especial ✨</p>
-            <a href="#loja" class="btn-magic px-12 py-4 rounded-full font-bold uppercase text-[10px] tracking-widest inline-block">Ver produtinhos</a>
-        </div>
-    </section>
+        <p class="text-pink-600 font-bold text-[10px] uppercase tracking-[4px] mb-8">Inauguração Dia 23 • 00:00h</p>
 
-    <main id="loja" class="container mx-auto py-20 px-6">
-        <div class="flex flex-col items-center mb-16" data-aos="fade-up">
-            <h3 class="font-logo text-3xl text-[#4a1d52] italic">Nossa Vitrine</h3>
-            <div class="w-16 h-1 bg-pink-300 mt-3 rounded-full"></div>
-        </div>
-
-        <div id="grid-produtos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+        <div style="display: flex; justify-content: space-around; margin-bottom: 35px;">
+            <div>
+                <span id="h" class="timer-number">00</span>
+                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Horas</p>
             </div>
-    </main>
-
-    <footer class="bg-white border-t border-pink-100 pt-20 pb-10">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-12">
-                <h4 class="font-logo text-3xl text-pink-600 mb-6 italic">Mais Bela Make</h4>
-                <div class="flex justify-center gap-6">
-                    <a href="https://www.instagram.com/maisbela10_/" target="_blank" class="p-4 bg-pink-50 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition shadow-sm">
-                        <i data-lucide="instagram"></i>
-                    </a>
-                    <a href="https://wa.me/553898827734" target="_blank" class="p-4 bg-pink-50 rounded-full text-pink-500 hover:bg-pink-500 hover:text-white transition shadow-sm">
-                        <i data-lucide="phone"></i>
-                    </a>
-                </div>
+            <div>
+                <span id="m" class="timer-number">00</span>
+                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Minutos</p>
             </div>
-            
-            <div class="border-t border-pink-50 pt-10">
-                <p class="text-pink-300 text-[10px] uppercase tracking-widest mb-4">Feito com muito carinho e brilho</p>
-                <div class="flex flex-col items-center">
-                    <span class="text-gray-300 text-[9px] uppercase font-bold tracking-[3px]">Desenvolvido por</span>
-                    <a href="https://www.instagram.com/alissonnxss/" target="_blank" class="text-pink-600 font-bold text-xs uppercase tracking-[5px] hover:text-pink-400 transition mt-1">
-                        alissonnxss
-                    </a>
-                </div>
+            <div>
+                <span id="s" class="timer-number">00</span>
+                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Segundos</p>
             </div>
         </div>
-    </footer>
 
-    <div id="cart-drawer" class="fixed inset-0 z-[200] hidden">
-        <div class="absolute inset-0 bg-pink-900/10 backdrop-blur-sm" onclick="toggleCart()"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white p-8 flex flex-col shadow-2xl">
-            <div class="flex justify-between items-center mb-10">
-                <h3 class="font-logo text-2xl text-pink-600 italic">Meus Escolhidos</h3>
-                <button onclick="toggleCart()"><i data-lucide="x" class="text-pink-300"></i></button>
-            </div>
-            <div id="cart-items" class="flex-1 space-y-6 overflow-y-auto pr-2"></div>
-            <div class="pt-8 border-t mt-6">
-                <div class="flex justify-between text-2xl font-bold mb-8 text-pink-600 leading-none">
-                    <span>Total</span>
-                    <span>R$ <span id="cart-total">0,00</span></span>
+        <div class="buttons">
+            <a href="https://www.instagram.com/maisbela10_/" target="_blank" class="btn btn-insta shadow-lg">Seguir @maisbela10_</a>
+            <a href="https://wa.me/553898827734" target="_blank" class="btn btn-whats shadow-lg">Chamar no WhatsApp</a>
+        </div>
+
+        <div style="margin-top: 45px; border-top: 1px solid #eee; padding-top: 25px;">
+            <p class="text-[8px] text-gray-400 uppercase tracking-widest mb-2">Desenvolvido por</p>
+            <a href="https://www.instagram.com/alissonnxss/" target="_blank" class="dev-link">
+                alissonnxss
+                <div class="insta-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </div>
-                <input type="text" id="user-name" placeholder="Como te chamamos? ✨" class="w-full bg-pink-50 border-none p-4 rounded-2xl mb-4 text-sm outline-none focus:ring-2 focus:ring-pink-200">
-                <button onclick="sendToWhatsApp()" class="btn-magic w-full py-5 rounded-2xl font-bold uppercase tracking-widest text-xs">
-                    Enviar meu pedido
-                </button>
-            </div>
+            </a>
         </div>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        lucide.createIcons();
-
-        // PRODUTINHOS DE TESTE (Makes & Cosméticos)
-        const produtos = [
-            { name: 'Lip Gloss Mágico', price: 10, img: 'https://images.unsplash.com/photo-1586495764447-c59ac3c273a7?w=500' },
-            { name: 'Sérum Hidratante', price: 15, img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500' },
-            { name: 'Rímel Boneca HD', price: 10, img: 'https://images.unsplash.com/photo-1591360236480-9c6a4cb3a6de?w=500' },
-            { name: 'Batom Matte Velvet', price: 10, img: 'https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?w=500' },
-            { name: 'Paleta Dreamy Nude', price: 25, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500' },
-            { name: 'Blush em Pó Rose', price: 12, img: 'https://images.unsplash.com/photo-1631730359585-38a4935cbb6b?w=500' },
-            { name: 'Kit Esponjinhas', price: 10, img: 'https://images.unsplash.com/photo-1590156221170-28a179df777c?w=500' },
-            { name: 'Delineador Black Gatinho', price: 10, img: 'https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=500' }
-        ];
-
-        const grid = document.getElementById('grid-produtos');
-        produtos.forEach((p, idx) => {
-            grid.innerHTML += `
-                <div class="product-card p-4 md:p-6" data-aos="fade-up" data-aos-delay="${idx*50}">
-                    <div class="relative overflow-hidden rounded-[25px] mb-5 aspect-square shadow-inner">
-                        <img src="${p.img}" class="w-full h-full object-cover">
-                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full font-bold text-[10px] text-pink-500 shadow-sm">R$ ${p.price.toFixed(2)}</div>
-                    </div>
-                    <h4 class="font-bold text-[#4a1d52] text-center text-xs md:text-sm mb-5 truncate">${p.name}</h4>
-                    <button onclick="addToCart('${p.name}', ${p.price})" class="w-full py-3 rounded-xl border-2 border-pink-100 text-pink-400 font-bold hover:bg-pink-500 hover:text-white transition-all text-[9px] uppercase tracking-widest">Eu quero!</button>
-                </div>
-            `;
-        });
-
-        let cart = [];
-        const bannerImgs = [
-            "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1487",
-            "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1470",
-            "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?w=1470"
-        ];
-        let hIdx = 0;
+        // Carrossel de 6 fotos
+        let cur = 0;
+        const s = document.querySelectorAll('.slide');
         setInterval(() => {
-            const img = document.getElementById('banner-img');
-            img.style.opacity = 0;
-            setTimeout(() => {
-                hIdx = (hIdx + 1) % bannerImgs.length;
-                img.src = bannerImgs[hIdx];
-                img.style.opacity = 0.7;
-            }, 1000);
-        }, 5000);
+            s[cur].classList.remove('active');
+            cur = (cur + 1) % s.length;
+            s[cur].classList.add('active');
+        }, 4000);
 
-        function addToCart(name, price) {
-            cart.push({name, price});
-            updateCart();
-            toggleCart();
+        // Cronômetro (Dia 23)
+        function timer() {
+            const end = new Date("2026-01-23T00:00:00").getTime();
+            const now = new Date().getTime();
+            const d = end - now;
+
+            if (d <= 0) {
+                document.getElementById('h').innerHTML = "00";
+                return;
+            }
+
+            const h = Math.floor(d / 3600000);
+            const m = Math.floor((d % 3600000) / 60000);
+            const s = Math.floor((d % 60000) / 1000);
+
+            document.getElementById('h').innerText = h.toString().padStart(2, '0');
+            document.getElementById('m').innerText = m.toString().padStart(2, '0');
+            document.getElementById('s').innerText = s.toString().padStart(2, '0');
         }
-
-        function updateCart() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const container = document.getElementById('cart-items');
-            let total = cart.reduce((a, b) => a + b.price, 0);
-            container.innerHTML = cart.length ? cart.map((i, idx) => `
-                <div class="flex items-center gap-4 bg-pink-50/50 p-4 rounded-2xl border border-pink-100 animate-fade-in">
-                    <div class="flex-1 font-bold text-pink-900 text-xs">${i.name}</div>
-                    <div class="font-bold text-xs text-pink-400">R$ ${i.price.toFixed(2)}</div>
-                    <button onclick="removeItem(${idx})" class="text-pink-200 hover:text-pink-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                </div>
-            `).join('') : "<div class='text-center py-20 opacity-30 italic text-xs'>Sua sacola está vazia ✨</div>";
-            document.getElementById('cart-total').innerText = total.toFixed(2);
-            lucide.createIcons();
-        }
-
-        function removeItem(idx) { cart.splice(idx, 1); updateCart(); }
-        function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
-
-        function sendToWhatsApp() {
-            const name = document.getElementById('user-name').value;
-            if(!name || !cart.length) return alert("Por favor, diga seu nome lindeza! 💖");
-            let msg = `✨ *PEDIDO MAIS BELA MAKE* ✨%0A%0A*Lindeza:* ${name}%0A----------------------------%0A`;
-            cart.forEach(i => msg += `• ${i.name} - R$ ${i.price.toFixed(2)}%0A`);
-            msg += `----------------------------%0A*TOTAL: R$ ${document.getElementById('cart-total').innerText}*`;
-            window.open(`https://wa.me/553898827734?text=${msg}`, '_blank');
-        }
+        setInterval(timer, 1000);
+        timer();
     </script>
 </body>
 </html>
