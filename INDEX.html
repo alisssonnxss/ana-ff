@@ -3,138 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mais Bela Make | Inauguração ✨</title>
+    <title>Mais Bela Make | Premium Beauty Experience 💖</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; overflow: hidden; background: #fff; }
-
-        .bg-slider { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; filter: brightness(0.65); }
-        .slide.active { opacity: 1; }
-        
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); z-index: 2; }
-
-        .main-card {
-            position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96);
-            border-radius: 40px; padding: 2.5rem 2rem; text-align: center; width: 90%; max-width: 450px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15); border: 1px solid #fff;
+        :root {
+            --pink-soft: #ffafcc;
+            --pink-dark: #ff8fab;
+            --purple-main: #4a1d52;
+            --accent: #fb6f92;
         }
 
-        .font-fancy { font-family: 'Dancing Script', cursive; color: #db2777; }
-        .font-title { font-family: 'Playfair Display', serif; color: #1a1a1a; }
-
-        .timer-number { font-size: 3.5rem; font-weight: 800; color: #db2777; line-height: 1; letter-spacing: -2px; }
-
-        .btn { display: block; width: 100%; padding: 16px; border-radius: 50px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-size: 11px; margin-bottom: 12px; transition: 0.3s; }
-        .btn-insta { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; }
-        .btn-whats { background: #25D366; color: white; }
-        .btn:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-        /* Rodapé com Link e Ícone do Insta */
-        .dev-link { 
-            display: inline-flex; align-items: center; gap: 8px; 
-            text-decoration: none; color: #1a1a1a; font-weight: 700; 
-            font-size: 13px; transition: 0.3s; margin-top: 5px;
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            color: var(--purple-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        .dev-link:hover { color: #bc1888; }
-        .insta-box { 
-            width: 22px; height: 22px; 
-            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); 
-            border-radius: 6px; display: flex; align-items: center; justify-content: center;
+
+        /* Fundo Estelar Animado */
+        .bg-sparkle {
+            background-color: #fffafd;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-attachment: fixed;
         }
-        .insta-box svg { fill: white; width: 14px; height: 14px; }
+
+        .font-fancy { font-family: 'Dancing Script', cursive; }
+        .font-logo { font-family: 'Playfair Display', serif; }
+
+        /* Carrossel de Luxo */
+        .carousel-container { position: relative; height: 75vh; overflow: hidden; }
+        .carousel-slide { 
+            position: absolute; inset: 0; opacity: 0; 
+            transition: opacity 1.5s ease-in-out, transform 3s ease; 
+            background-size: cover; background-position: center;
+            transform: scale(1.1);
+        }
+        .carousel-slide.active { opacity: 1; transform: scale(1); }
+
+        /* Ticker Premium */
+        .ticker-wrap { background: white; border-bottom: 1px solid #fce4ec; overflow: hidden; padding: 15px 0; }
+        .ticker { display: flex; white-space: nowrap; animation: ticker 50s linear infinite; }
+        .ticker-item { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #fb6f92; padding: 0 60px; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Efeitos de Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hover de Produtos */
+        .product-card {
+            background: white;
+            border-radius: 30px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(251, 111, 146, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff5f7; }
+        ::-webkit-scrollbar-thumb { background: var(--pink-soft); border-radius: 10px; }
+
+        /* FAQ Accordion */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-item.active i { transform: rotate(180deg); }
     </style>
 </head>
-<body onclick="document.getElementById('musica').play()">
+<body class="bg-sparkle">
 
-    <audio id="musica" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="bg-slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200')"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522338223523-d30006796c73?q=80&w=1200')"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=80&w=1200')"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200')"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1200')"></div>
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1526045431048-f857369aba09?q=80&w=1200')"></div>
+    <div class="bg-gradient-to-r from-[#ffafcc] via-[#fb6f92] to-[#ffafcc] text-white py-2.5 text-center text-[10px] font-bold tracking-[4px] uppercase animate-pulse">
+        ✨ GANHE UM MIMO NAS COMPRAS ACIMA DE R$ 199 ✨
     </div>
 
-    <div class="overlay"></div>
-
-    <div class="main-card">
-        <p class="font-fancy text-3xl">Prepare-se, lindeza...</p>
-        <h1 class="font-title text-4xl md:text-5xl mt-2 mb-1">Mais Bela Make</h1>
-        <p style="letter-spacing: 6px;" class="text-[9px] font-bold text-gray-400 uppercase mb-8">Maquiagens & Cosméticos</p>
-        
-        <p class="text-pink-600 font-bold text-[10px] uppercase tracking-[4px] mb-8">Inauguração Dia 23 • 00:00h</p>
-
-        <div style="display: flex; justify-content: space-around; margin-bottom: 35px;">
-            <div>
-                <span id="h" class="timer-number">00</span>
-                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Horas</p>
+    <nav class="sticky top-0 z-[100] bg-white/80 backdrop-blur-lg border-b border-pink-50 py-5">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-pink-500 transition"><i data-lucide="search" class="w-5 h-5"></i></a>
+                <a href="https://www.instagram.com/maisbela10_/" target="_blank" class="hover:text-pink-500 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
             </div>
-            <div>
-                <span id="m" class="timer-number">00</span>
-                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Minutos</p>
+            
+            <div class="text-center group cursor-pointer">
+                <h1 class="font-logo text-3xl md:text-5xl text-[#4a1d52] font-bold italic transition-all group-hover:tracking-widest">Mais Bela Make</h1>
+                <p class="text-[9px] tracking-[5px] uppercase text-pink-400 mt-1">Sua essência, seu brilho</p>
             </div>
-            <div>
-                <span id="s" class="timer-number">00</span>
-                <p class="text-[9px] font-bold text-gray-300 mt-2 uppercase tracking-tighter">Segundos</p>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-3 bg-pink-50 rounded-2xl text-pink-600 hover:bg-pink-100 transition shadow-sm">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-[#fb6f92] text-white text-[10px] rounded-full h-5 w-5 flex items-center justify-center font-bold border-2 border-white">0</span>
+                </button>
             </div>
         </div>
+    </nav>
 
-        <div class="buttons">
-            <a href="https://www.instagram.com/maisbela10_/" target="_blank" class="btn btn-insta shadow-lg">Seguir @maisbela10_</a>
-            <a href="https://wa.me/553898827734" target="_blank" class="btn btn-whats shadow-lg">Chamar no WhatsApp</a>
-        </div>
-
-        <div style="margin-top: 45px; border-top: 1px solid #eee; padding-top: 25px;">
-            <p class="text-[8px] text-gray-400 uppercase tracking-widest mb-2">Desenvolvido por</p>
-            <a href="https://www.instagram.com/alissonnxss/" target="_blank" class="dev-link">
-                alissonnxss
-                <div class="insta-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    <section class="carousel-container">
+        <div class="carousel-slide active" style="background-image: linear-gradient(to right, rgba(0,0,0,0.4), transparent), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1487')">
+            <div class="container mx-auto h-full flex items-center px-10">
+                <div class="max-w-xl text-white">
+                    <span class="font-fancy text-5xl text-pink-200 block mb-4" data-aos="fade-right">Nova Coleção</span>
+                    <h2 class="text-6xl font-bold mb-6 leading-tight">O Poder da sua <br>Própria Beleza</h2>
+                    <a href="#loja" class="inline-block bg-white text-pink-500 px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-pink-50 transition shadow-xl">Comprar Agora</a>
                 </div>
-            </a>
+            </div>
+        </div>
+        <div class="carousel-slide" style="background-image: linear-gradient(to right, rgba(0,0,0,0.4), transparent), url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1470')">
+            <div class="container mx-auto h-full flex items-center px-10">
+                <div class="max-w-xl text-white">
+                    <h2 class="text-6xl font-bold mb-6 italic font-logo">Lábios que Marcam</h2>
+                    <p class="text-lg mb-8 opacity-90 tracking-wide">Descubra nossa linha de glosses com ácido hialurônico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">PAGAMENTO FACILITADO 💳</div>
+            <div class="ticker-item">PRODUTOS 100% ORIGINAIS ✅</div>
+            <div class="ticker-item">BELEZA CONSCIENTE 🐰</div>
+            <div class="ticker-item">SUPORTE VIA WHATSAPP 📱</div>
+            <div class="ticker-item">PAGAMENTO FACILITADO 💳</div>
+            <div class="ticker-item">PRODUTOS 100% ORIGINAIS ✅</div>
+            <div class="ticker-item">BELEZA CONSCIENTE 🐰</div>
         </div>
     </div>
 
+    <main id="loja" class="container mx-auto py-24 px-6">
+        <div class="flex flex-col items-center mb-20 text-center">
+            <span class="text-pink-400 font-bold tracking-[5px] uppercase text-xs mb-4">Must-Haves</span>
+            <h3 class="font-logo text-5xl text-purple-900 italic mb-4">Nossos Favoritos</h3>
+            <div class="w-24 h-1 bg-pink-100 rounded-full"></div>
+        </div>
+
+        <div id="grid-produtos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            </div>
+    </main>
+
+    <section class="bg-pink-50/30 py-24 border-y border-pink-100">
+        <div class="container mx-auto px-6">
+            <h3 class="font-logo text-4xl text-center mb-16 italic">O que dizem nossas Lindezas</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 rounded-[40px] shadow-sm italic text-center" data-aos="fade-up">
+                    <p class="mb-6 opacity-70">"As makes são surreais de boas! O Lip Gloss virou meu favorito da vida, não sai da bolsa."</p>
+                    <span class="font-bold text-pink-500 uppercase text-[10px] tracking-widest">— Marina S.</span>
+                </div>
+                <div class="glass-card p-10 rounded-[40px] shadow-sm italic text-center" data-aos="fade-up" data-aos-delay="200">
+                    <p class="mb-6 opacity-70">"Atendimento impecável e o cheirinho que vem na caixa é maravilhoso. Amei cada detalhe!"</p>
+                    <span class="font-bold text-pink-500 uppercase text-[10px] tracking-widest">— Juliana F.</span>
+                </div>
+                <div class="glass-card p-10 rounded-[40px] shadow-sm italic text-center" data-aos="fade-up" data-aos-delay="400">
+                    <p class="mb-6 opacity-70">"Chegou super rápido e os produtos são de uma qualidade que eu só via na gringa."</p>
+                    <span class="font-bold text-pink-500 uppercase text-[10px] tracking-widest">— Bia R.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto py-24 px-6 max-w-4xl">
+        <h3 class="font-logo text-4xl text-center mb-12 italic">Dúvidas Frequentes</h3>
+        <div class="space-y-4">
+            <div class="faq-item border border-pink-100 rounded-2xl bg-white transition-all overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-6 flex justify-between items-center font-bold text-left">
+                    Qual o prazo de entrega?
+                    <i data-lucide="chevron-down" class="transition-transform"></i>
+                </button>
+                <div class="faq-content px-6 pb-6 text-sm text-gray-500">
+                    O prazo varia de acordo com sua região, mas geralmente entregamos entre 3 a 7 dias úteis após a postagem.
+                </div>
+            </div>
+            <div class="faq-item border border-pink-100 rounded-2xl bg-white transition-all overflow-hidden">
+                <button onclick="toggleFAQ(this)" class="w-full p-6 flex justify-between items-center font-bold text-left">
+                    Os produtos são crueldade free?
+                    <i data-lucide="chevron-down" class="transition-transform"></i>
+                </button>
+                <div class="faq-content px-6 pb-6 text-sm text-gray-500">
+                    Sim! Trabalhamos apenas com marcas que não realizam testes em animais.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-pink-100 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-logo text-3xl italic text-pink-400 mb-10">Mais Bela Make</h2>
+            <div class="flex justify-center gap-10 mb-16 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="#" class="hover:text-pink-400 transition">Início</a>
+                <a href="#loja" class="hover:text-pink-400 transition">Produtos</a>
+                <a href="#" class="hover:text-pink-400 transition">Contato</a>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-gray-300 text-[10px] uppercase font-bold tracking-[5px] mb-6">Designed by</span>
+                <a href="https://www.instagram.com/alissonnxss/" target="_blank" class="flex items-center gap-4 px-8 py-4 rounded-full bg-pink-50/50 border border-pink-100 hover:bg-pink-100 transition shadow-sm group">
+                    <span class="text-[#4a1d52] font-bold text-xs tracking-[3px] uppercase">@alissonnxss</span>
+                    <i data-lucide="instagram" class="w-4 h-4 text-pink-500 group-hover:scale-125 transition"></i>
+                </a>
+            </div>
+            
+            <p class="mt-20 text-[10px] text-gray-300 tracking-widest uppercase">© 2026 Mais Bela Make - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <div id="cart-drawer" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-purple-900/10 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white p-8 flex flex-col shadow-2xl animate-in slide-in-from-right duration-500">
+            <div class="flex justify-between items-center mb-10 pb-4 border-b">
+                <h3 class="font-logo text-3xl text-pink-600 italic">Sua Sacola</h3>
+                <button onclick="toggleCart()"><i data-lucide="x" class="text-pink-300 w-8 h-8"></i></button>
+            </div>
+            <div id="cart-items" class="flex-1 space-y-6 overflow-y-auto pr-2"></div>
+            <div class="pt-8 border-t mt-8">
+                <div class="flex justify-between items-end mb-8 text-2xl font-bold text-pink-600">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest">Total do Pedido</span>
+                    <span>R$ <span id="cart-total">0,00</span></span>
+                </div>
+                <input type="text" id="user-name" placeholder="Como devemos te chamar? ✨" class="w-full bg-gray-50 p-5 rounded-2xl mb-4 text-sm outline-none border-2 border-transparent focus:border-pink-200 transition">
+                <button onclick="sendToWhatsApp()" class="w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white py-5 rounded-2xl font-bold uppercase text-xs tracking-widest flex items-center justify-center gap-3 shadow-lg hover:scale-[1.02] transition">
+                    <i data-lucide="send" class="w-4 h-4"></i> Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Carrossel de 6 fotos
-        let cur = 0;
-        const s = document.querySelectorAll('.slide');
+        AOS.init();
+        lucide.createIcons();
+
+        // Banner System
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
         setInterval(() => {
-            s[cur].classList.remove('active');
-            cur = (cur + 1) % s.length;
-            s[cur].classList.add('active');
-        }, 4000);
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 6000);
 
-        // Cronômetro (Dia 23)
-        function timer() {
-            const end = new Date("2026-01-23T00:00:00").getTime();
-            const now = new Date().getTime();
-            const d = end - now;
-
-            if (d <= 0) {
-                document.getElementById('h').innerHTML = "00";
-                return;
-            }
-
-            const h = Math.floor(d / 3600000);
-            const m = Math.floor((d % 3600000) / 60000);
-            const s = Math.floor((d % 60000) / 1000);
-
-            document.getElementById('h').innerText = h.toString().padStart(2, '0');
-            document.getElementById('m').innerText = m.toString().padStart(2, '0');
-            document.getElementById('s').innerText = s.toString().padStart(2, '0');
+        // FAQ Toggle
+        function toggleFAQ(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
         }
-        setInterval(timer, 1000);
-        timer();
+
+        // Product Database
+        const produtos = [
+            { id: 1, name: '', price: 0.0, img: 'imagens/escovas.jpeg' },
+            { id: 2, name: '', price: 0.0, img: 'imagens/WhatsApp Image 2026-01-21 at 22.08.47.jpeg' },
+            { id: 3, name: '', price: 0.0, img: 'imagens/WhatsApp Image 2026-01-22 at 18.26.26.jpeg' },
+            { id: 4, name: '', price: 0.0, img: 'imagens/WhatsApp Image 2026-01-22 at 18.26.28.jpeg' },
+            { id: 5, name: '', price: 0.0, img: 'imagens/WhatsApp Image 2026-01-22 at 18.26.39.jpeg' },
+            { id: 6, name: '', price: 0.0, img: 'imagens/WhatsApp Image 2026-01-22 at 18.26.29 (1).jpeg' },
+            { id: 7, name: '', price: 0.0, img: 'imagens/sabonete intimo.jpeg' }
+            
+        ];
+
+        let cart = [];
+
+        // Render Store
+        function renderStore() {
+            const grid = document.getElementById('grid-produtos');
+            grid.innerHTML = produtos.map(p => `
+                <div class="product-card p-6" data-aos="fade-up">
+                    <div class="relative overflow-hidden rounded-[25px] mb-6 aspect-square group shadow-inner bg-gray-50">
+                        <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full font-bold text-[9px] text-pink-500 shadow-sm uppercase tracking-tighter">Novidade</div>
+                    </div>
+                    <h4 class="font-bold text-[#4a1d52] text-center text-xs mb-3 uppercase tracking-wider h-8 overflow-hidden">${p.name}</h4>
+                    <p class="text-center text-pink-500 font-bold mb-6 text-sm italic font-logo">R$ ${p.price.toFixed(2)}</p>
+                    <button onclick="addToCart(${p.id})" class="w-full py-4 rounded-2xl bg-gradient-to-tr from-pink-400 to-pink-300 text-white font-bold text-[10px] uppercase tracking-[2px] shadow-sm hover:shadow-pink-200/50 hover:translate-y-[-2px] transition-all">Comprar</button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        function addToCart(id) {
+            const item = cart.find(i => i.id === id);
+            if (item) item.qtd++;
+            else cart.push({ ...produtos.find(p => p.id === id), qtd: 1 });
+            updateCart();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qtd += delta;
+                if (item.qtd <= 0) cart = cart.filter(i => i.id !== id);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const container = document.getElementById('cart-items');
+            document.getElementById('cart-count').innerText = cart.reduce((acc, i) => acc + i.qtd, 0);
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-24 opacity-20">
+                        <i data-lucide="shopping-cart" class="w-16 h-16 mb-4"></i>
+                        <p class="italic text-xs">Sua sacola está vazia ✨</p>
+                    </div>
+                `;
+                document.getElementById('cart-total').innerText = "0,00";
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-5 p-4 rounded-3xl bg-pink-50/20 border border-pink-50 shadow-sm animate-in fade-in slide-in-from-right-5">
+                        <img src="${item.img}" class="w-20 h-20 object-cover rounded-2xl shadow-md">
+                        <div class="flex-1">
+                            <h5 class="text-xs font-bold text-pink-900 uppercase tracking-tight mb-2">${item.name}</h5>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4 bg-white px-3 py-1.5 rounded-xl shadow-sm">
+                                    <button onclick="changeQty(${item.id}, -1)" class="text-pink-400 font-bold">-</button>
+                                    <span class="text-xs font-bold w-4 text-center">${item.qtd}</span>
+                                    <button onclick="changeQty(${item.id}, 1)" class="text-pink-400 font-bold">+</button>
+                                </div>
+                                <span class="text-sm font-bold text-pink-600">R$ ${(item.price * item.qtd).toFixed(2)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('cart-total').innerText = cart.reduce((acc, i) => acc + (i.price * i.qtd), 0).toFixed(2);
+            }
+            lucide.createIcons();
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('user-name').value;
+            if(!name || cart.length === 0) return alert("Diga seu nome lindeza! 💖");
+            let msg = `✨ *PEDIDO MAIS BELA MAKE* ✨%0A%0A*Lindeza:* ${name}%0A----------------------------%0A`;
+            cart.forEach(i => msg += `• *${i.qtd}x* ${i.name} - R$ ${(i.price * i.qtd).toFixed(2)}%0A`);
+            msg += `----------------------------%0A💰 *TOTAL: R$ ${document.getElementById('cart-total').innerText}*`;
+            window.open(`https://wa.me/553898827734?text=${msg}`, '_blank');
+        }
+
+        renderStore();
     </script>
 </body>
 </html>
